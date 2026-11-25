@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="Georgia, serif">
+  <rect width="800" height="420" fill="#fffaf0"/>
+  <!-- cielo y suelo -->
+  <rect width="800" height="120" fill="#e3f0ee"/>
+  <path d="M0 120 H800 V420 H0Z" fill="#b89b72"/>
+  <!-- hueco del estanque con escalones -->
+  <path d="M40 120 L110 120 L110 160 L220 160 L250 230 L330 230 L370 330 L430 330 L470 230 L550 230 L580 160 L690 160 L690 120 L760 120" fill="none" stroke="#6b5640" stroke-width="3"/>
+  <path d="M40 120 L110 120 L110 160 L220 160 L250 230 L330 230 L370 330 L430 330 L470 230 L550 230 L580 160 L690 160 L690 120 L760 120 Z" fill="#7fb3b2"/>
+  <path d="M40 120 L110 120 L110 160 L220 160 L250 230 L330 230 L370 330 L430 330 L470 230 L550 230 L580 160 L690 160 L690 120 L760 120 Z" fill="url(#prof)"/>
+  <defs>
+    <linearGradient id="prof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9ccac6" stop-opacity="0"/>
+      <stop offset="1" stop-color="#24506a" stop-opacity=".85"/>
+    </linearGradient>
+  </defs>
+  <!-- lámina -->
+  <path d="M40 124 L106 124 L106 164 L217 164 L247 234 L327 234 L367 334 L433 334 L473 234 L553 234 L583 164 L694 164 L694 124 L760 124" fill="none" stroke="#2b2a26" stroke-width="2" stroke-dasharray="6 4"/>
+  <!-- superficie del agua -->
+  <path d="M40 120 H760" stroke="#3f8a8c" stroke-width="3"/>
+  <!-- plantas palustres (juncos) -->
+  <g stroke="#4c6b3c" stroke-width="4" stroke-linecap="round">
+    <path d="M140 160 V70 M155 160 V55 M170 160 V80 M630 160 V60 M645 160 V75 M660 160 V50"/>
+  </g>
+  <g fill="#4c6b3c"><ellipse cx="155" cy="58" rx="5" ry="16"/><ellipse cx="660" cy="54" rx="5" ry="16"/></g>
+  <!-- lirios -->
+  <g fill="#e0b437"><circle cx="195" cy="92" r="7"/><circle cx="605" cy="88" r="7"/></g>
+  <path d="M195 160 V98 M605 160 V94" stroke="#5f8a45" stroke-width="3"/>
+  <!-- oxigenadoras sumergidas -->
+  <g stroke="#3f7a3a" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M280 230 q -10 -25 0 -50 q 10 -25 0 -45"/><path d="M300 230 q 10 -25 0 -50 q -10 -20 0 -40"/>
+    <path d="M500 230 q -10 -25 0 -50 q 10 -25 0 -45"/><path d="M520 230 q 10 -25 0 -50"/>
+  </g>
+  <!-- nenúfar en zona profunda -->
+  <path d="M400 330 C 395 260 405 190 400 120" stroke="#5f8a45" stroke-width="3" fill="none"/>
+  <ellipse cx="400" cy="119" rx="34" ry="6" fill="#6b9a4f"/>
+  <circle cx="400" cy="112" r="7" fill="#f3d2dc"/>
+  <!-- peces -->
+  <g fill="#e8892b">
+    <path d="M370 300 q 15 -10 30 0 q -15 10 -30 0z M370 300 l -10 -7 v14z"/>
+    <path d="M430 285 q -15 -10 -30 0 q 15 10 30 0z M430 285 l 10 -7 v14z"/>
+  </g>
+  <!-- cotas -->
+  <g font-size="15" fill="#2b2a26">
+    <text x="112" y="200">Zona palustre</text>
+    <text x="112" y="217" font-size="13" fill="#5f5b50">0–20 cm</text>
+    <text x="210" y="268">Aguas someras</text>
+    <text x="210" y="285" font-size="13" fill="#5f5b50">20–60 cm</text>
+    <text x="345" y="370">Zona profunda</text>
+    <text x="345" y="387" font-size="13" fill="#5f5b50">más de 80 cm</text>
+    <text x="560" y="300" font-size="13" fill="#2b2a26">- - -  lámina de EPDM</text>
+    <text x="560" y="318" font-size="13" fill="#2b2a26">sobre geotextil</text>
+  </g>
+  <text x="40" y="35" font-size="20" fill="#2b2a26">Corte transversal del estanque</text>
+</svg>

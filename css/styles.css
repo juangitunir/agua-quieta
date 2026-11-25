@@ -1,0 +1,383 @@
+/* =========================================================
+   Agua Quieta — hoja de estilos
+   Los colores se definen como variables CSS. El modo noche
+   solo cambia esas variables (ver [data-tema="noche"]).
+   ========================================================= */
+
+:root {
+  --fondo: #f4efe3;          /* papel de cuaderno */
+  --superficie: #fffaf0;
+  --texto: #2b2a26;
+  --texto-suave: #5f5b50;
+  --acento: #2f6b5a;         /* verde agua */
+  --acento-2: #c8742d;       /* naranja carpín */
+  --borde: #d9d0bc;
+  --sombra: 0 2px 10px rgba(60, 50, 30, .08);
+
+  /* colores de la ilustración de cabecera */
+  --cielo: #cfe6e8;
+  --astro: #f2c14e;
+  --colina: #8fae7e;
+  --agua: #4f8a8b;
+  --onda: #d9eeee;
+  --juncos: #4c6b3c;
+  --nenufar: #6b9a4f;
+
+  --radio: 10px;
+  --fuente-titulos: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --fuente-texto: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+[data-tema="noche"] {
+  --fondo: #141c1f;
+  --superficie: #1c272b;
+  --texto: #e6e1d6;
+  --texto-suave: #a9b2ad;
+  --acento: #7cc4ad;
+  --acento-2: #e59a55;
+  --borde: #2f3d41;
+  --sombra: 0 2px 12px rgba(0, 0, 0, .35);
+
+  --cielo: #1b2a44;
+  --astro: #e8e6d8;
+  --colina: #253b33;
+  --agua: #1f4a55;
+  --onda: #5d8b95;
+  --juncos: #2e4a2c;
+  --nenufar: #3a5f35;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--fuente-texto);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  transition: background-color .4s ease, color .4s ease;
+}
+
+h1, h2, h3, h4 { font-family: var(--fuente-titulos); line-height: 1.2; }
+a { color: var(--acento); }
+
+/* ---------- Cabecera ilustrada ---------- */
+.cabecera { position: relative; min-height: 260px; overflow: hidden; }
+.escena { position: absolute; inset: 0; width: 100%; height: 100%; }
+.escena .cielo  { fill: var(--cielo);  transition: fill .6s; }
+.escena .astro  { fill: var(--astro);  transition: fill .6s, transform .8s ease; }
+.escena .colina { fill: var(--colina); transition: fill .6s; }
+.escena .agua   { fill: var(--agua);   transition: fill .6s; }
+.escena .onda   { stroke: var(--onda); stroke-width: 3; fill: none; stroke-linecap: round; }
+.escena .juncos { stroke: var(--juncos); stroke-width: 4; fill: var(--juncos); stroke-linecap: round; }
+.escena .nenufares { fill: var(--nenufar); }
+/* de noche la luna "sube" un poco */
+[data-tema="noche"] .escena .astro { transform: translate(-60px, -10px); }
+
+.cabecera-texto {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.8rem 1.25rem 7rem;
+}
+.antetitulo {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-size: .78rem;
+  color: var(--texto-suave);
+}
+.cabecera h1 { font-size: clamp(2.4rem, 6vw, 3.6rem); margin: .2rem 0 .4rem; }
+.lema { margin: 0; max-width: 48ch; color: var(--texto-suave); }
+
+/* ---------- Navegación ---------- */
+.navegacion {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .6rem 1rem;
+  background: var(--superficie);
+  border-bottom: 1px solid var(--borde);
+  box-shadow: var(--sombra);
+  transition: background-color .4s ease;
+}
+.pestanas {
+  display: flex;
+  gap: .3rem;
+  overflow-x: auto;
+  flex: 1;
+  scrollbar-width: none;
+}
+.pestana {
+  flex-shrink: 0;
+  border: 0;
+  background: none;
+  color: var(--texto-suave);
+  font: inherit;
+  font-size: .95rem;
+  padding: .45rem .8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color .2s, color .2s;
+}
+.pestana .num { font-variant-numeric: tabular-nums; opacity: .6; margin-right: .2rem; }
+.pestana:hover { background: var(--fondo); color: var(--texto); }
+.pestana[aria-selected="true"] { background: var(--acento); color: var(--superficie); }
+.pestana:focus-visible, .interruptor:focus-visible, .tarjeta:focus-visible, button:focus-visible {
+  outline: 3px solid var(--acento-2);
+  outline-offset: 2px;
+}
+
+/* Interruptor día/noche */
+.interruptor {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  border: 1px solid var(--borde);
+  background: var(--fondo);
+  color: var(--texto);
+  font: inherit;
+  font-size: .85rem;
+  padding: .35rem .75rem .35rem .4rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.interruptor-icono {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: #f2c14e;                    /* sol */
+  box-shadow: 0 0 0 3px rgba(242, 193, 78, .3);
+  transition: background .4s, box-shadow .4s;
+}
+[data-tema="noche"] .interruptor-icono {
+  background: #e8e6d8;                    /* luna: un círculo con "mordisco" */
+  box-shadow: inset -7px -2px 0 0 #9aa3a8;
+}
+
+/* ---------- Contenido ---------- */
+main { max-width: 760px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+
+.entrada[hidden] { display: none; }
+.entrada.activa { animation: aparecer .45s ease both; }
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.destacado {
+  font-family: var(--fuente-titulos);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  border-left: 4px solid var(--acento-2);
+  padding-left: 1rem;
+  margin-top: 0;
+}
+
+.seccion-titulo { margin-top: 2.5rem; }
+
+.tarjetas { display: grid; gap: 1rem; }
+.tarjeta {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 1rem;
+  align-items: center;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: .9rem;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+  transition: transform .2s ease, border-color .2s;
+}
+.tarjeta:hover { transform: translateY(-3px); border-color: var(--acento); }
+.tarjeta img { width: 100%; border-radius: 6px; background: #fffaf0; }
+.tarjeta h3 { margin: .1rem 0 .3rem; }
+.tarjeta p { margin: 0 0 .3rem; }
+.tarjeta-num, .entrada-num {
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--acento-2);
+  margin: 0;
+}
+.lectura { font-size: .82rem; color: var(--texto-suave); }
+
+.entrada-cabecera h2 { font-size: clamp(1.7rem, 4vw, 2.3rem); margin: .3rem 0 .2rem; }
+
+.figura { margin: 1.8rem 0; }
+.figura img {
+  width: 100%;
+  border-radius: var(--radio);
+  border: 1px solid var(--borde);
+  background: #fffaf0;            /* las ilustraciones tienen fondo claro también de noche */
+  cursor: zoom-in;
+  transition: filter .2s;
+}
+.figura img:hover { filter: brightness(1.03); }
+.figura figcaption { font-size: .85rem; color: var(--texto-suave); margin-top: .4rem; }
+
+.lista-zonas { list-style: none; padding: 0; }
+.lista-zonas li { margin-bottom: .9rem; }
+.etiqueta {
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 600;
+  padding: .1rem .5rem;
+  border-radius: 4px;
+  color: #fff;
+  margin-right: .3rem;
+  font-variant-numeric: tabular-nums;
+}
+.e1 { background: #7a9a4a; }
+.e2 { background: #3f8a8c; }
+.e3 { background: #24506a; }
+
+.nota {
+  background: var(--superficie);
+  border: 1px dashed var(--acento);
+  border-radius: var(--radio);
+  padding: 1rem 1.2rem;
+  margin: 1.8rem 0;
+}
+
+/* ---------- Herramientas interactivas ---------- */
+.herramienta {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-top: 4px solid var(--acento);
+  border-radius: var(--radio);
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  box-shadow: var(--sombra);
+}
+.herramienta h4 { margin: 0 0 .8rem; font-size: 1.15rem; }
+.campos { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+.campos label { display: flex; flex-direction: column; font-size: .85rem; color: var(--texto-suave); gap: .25rem; }
+.campos input {
+  font: inherit;
+  padding: .45rem .6rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: var(--fondo);
+  color: var(--texto);
+}
+.campos input:invalid { border-color: #c0392b; }
+
+.resultado { display: block; margin-top: 1rem; }
+.resultado .cifras { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; }
+.cifra { background: var(--fondo); border-radius: 8px; padding: .6rem .7rem; }
+.cifra strong { display: block; font-size: 1.4rem; font-family: var(--fuente-titulos); color: var(--acento); }
+.cifra span { font-size: .8rem; color: var(--texto-suave); }
+.resultado .error { color: #c0392b; margin: 0; }
+.aviso-pequeno { font-size: .78rem; color: var(--texto-suave); margin: .7rem 0 0; }
+
+/* Barra de temperatura: un degradado de frío a calor */
+.etiqueta-rango { display: block; margin-bottom: .4rem; }
+#temperatura {
+  width: 100%;
+  appearance: none;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #4a7fb5, #5fa8a0 35%, #9cc06a 55%, #e2a33f 80%, #c4502f);
+  outline-offset: 4px;
+}
+#temperatura::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--superficie);
+  border: 3px solid var(--texto);
+  cursor: grab;
+}
+#temperatura::-moz-range-thumb {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--superficie);
+  border: 3px solid var(--texto);
+  cursor: grab;
+}
+.escala { display: flex; justify-content: space-between; font-size: .75rem; color: var(--texto-suave); }
+
+.consejo { border-left: 5px solid var(--color-consejo, var(--acento)); padding: .2rem 0 .2rem .9rem; }
+.consejo h5 { margin: 0 0 .2rem; font-size: 1.05rem; font-family: var(--fuente-titulos); }
+.consejo p { margin: 0; }
+
+/* Fichas desplegables */
+.fichas { display: grid; gap: .6rem; margin: 1.5rem 0; }
+.ficha {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: .7rem 1rem;
+}
+.ficha summary { cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: .5rem; }
+.ficha[open] summary { margin-bottom: .4rem; }
+.ficha dl { display: grid; grid-template-columns: auto 1fr; gap: .1rem 1rem; font-size: .9rem; margin: .5rem 0 0; }
+.ficha dt { color: var(--texto-suave); }
+.ficha dd { margin: 0; }
+.punto { width: 12px; height: 12px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+.naranja { background: #e8892b; }
+.verde { background: #6f8a3c; }
+.rojo { background: #c8402f; }
+
+.siguiente { margin-top: 2.5rem; text-align: right; }
+.siguiente button {
+  font: inherit;
+  border: 1px solid var(--acento);
+  background: none;
+  color: var(--acento);
+  padding: .55rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color .2s, color .2s;
+}
+.siguiente button:hover { background: var(--acento); color: var(--superficie); }
+
+.pie {
+  border-top: 1px solid var(--borde);
+  text-align: center;
+  font-size: .82rem;
+  color: var(--texto-suave);
+  padding: 1.5rem 1rem;
+}
+
+/* ---------- Visor de imágenes ---------- */
+#visor {
+  border: 0;
+  border-radius: var(--radio);
+  padding: 1rem;
+  max-width: min(1000px, 94vw);
+  background: var(--superficie);
+  color: var(--texto);
+}
+#visor::backdrop { background: rgba(10, 20, 20, .75); }
+#visor img { width: 100%; background: #fffaf0; border-radius: 6px; }
+#visor p { margin: .5rem 0 0; font-size: .9rem; color: var(--texto-suave); }
+.cerrar-visor {
+  float: right;
+  border: 0;
+  background: none;
+  color: var(--texto);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ---------- Adaptación a móvil (responsive) ---------- */
+@media (max-width: 620px) {
+  .tarjeta { grid-template-columns: 1fr; }
+  .campos, .resultado .cifras { grid-template-columns: 1fr; }
+  .interruptor-texto { display: none; }
+  .cabecera-texto { padding-bottom: 4.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

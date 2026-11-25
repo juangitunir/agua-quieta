@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cuaderno de campo sobre la cría de peces en estanques naturales: diseño, especies y calidad del agua.">
+  <title>Agua Quieta · Cuaderno de un estanque natural</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Cabecera: la ilustración cambia entre día y noche mediante variables CSS -->
+  <header class="cabecera">
+    <svg class="escena" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <rect class="cielo" width="1200" height="260"/>
+      <circle class="astro" cx="980" cy="70" r="34"/>
+      <path class="colina" d="M0 170 Q 200 110 420 160 T 820 150 T 1200 140 V260 H0Z"/>
+      <path class="agua" d="M0 200 Q 300 185 600 198 T 1200 196 V260 H0Z"/>
+      <path class="onda" d="M120 222 q 30 -8 60 0 M520 232 q 40 -10 80 0 M880 218 q 30 -8 60 0"/>
+      <g class="juncos">
+        <path d="M60 210 V140 M75 212 V120 M90 210 V150 M1120 208 V130 M1135 210 V112 M1150 208 V145"/>
+        <ellipse cx="75" cy="122" rx="4" ry="14"/><ellipse cx="1135" cy="114" rx="4" ry="14"/>
+      </g>
+      <g class="nenufares">
+        <ellipse cx="330" cy="212" rx="26" ry="7"/><ellipse cx="380" cy="220" rx="18" ry="5"/>
+        <ellipse cx="760" cy="226" rx="24" ry="6"/>
+      </g>
+    </svg>
+    <div class="cabecera-texto">
+      <p class="antetitulo">Cuaderno de campo</p>
+      <h1>Agua Quieta</h1>
+      <p class="lema">Criar peces en un estanque natural, sin bombas ni magia: plantas, paciencia y observación.</p>
+    </div>
+  </header>
+
+  <!-- Navegación: cada botón muestra una entrada y oculta las demás (ver js/script.js) -->
+  <nav class="navegacion" aria-label="Entradas del blog">
+    <div class="pestanas" role="tablist">
+      <button class="pestana" role="tab" data-entrada="inicio" aria-selected="true">Inicio</button>
+      <button class="pestana" role="tab" data-entrada="diseno" aria-selected="false"><span class="num">01</span> Diseñar el estanque</button>
+      <button class="pestana" role="tab" data-entrada="especies" aria-selected="false"><span class="num">02</span> Qué peces elegir</button>
+      <button class="pestana" role="tab" data-entrada="agua" aria-selected="false"><span class="num">03</span> Agua y estaciones</button>
+    </div>
+    <button id="cambiar-tema" class="interruptor" type="button" aria-pressed="false" title="Cambiar entre día y noche">
+      <span class="interruptor-icono" aria-hidden="true"></span>
+      <span class="interruptor-texto">Noche</span>
+    </button>
+  </nav>
+
+  <main>
+
+    <!-- ===================== INICIO ===================== -->
+    <section id="inicio" class="entrada activa" role="tabpanel">
+      <div class="intro">
+        <p class="destacado">Hace tres primaveras cavé un hoyo en el fondo del huerto. Hoy es un estanque con nenúfares, ranas y una docena de peces que nunca han visto un filtro eléctrico. Este cuaderno recoge lo que he aprendido (y lo que he hecho mal) por el camino.</p>
+        <p>Un <strong>estanque natural</strong> se mantiene limpio gracias a sus plantas y a las bacterias que viven en el fondo, no a una depuradora. Funciona si respetamos su equilibrio: pocas especies, pocos peces y mucha vegetación.</p>
+      </div>
+
+      <h2 class="seccion-titulo">Entradas</h2>
+      <div class="tarjetas">
+        <article class="tarjeta" data-ir="diseno" tabindex="0">
+          <img src="img/perfil-estanque.svg" alt="" loading="lazy">
+          <div>
+            <p class="tarjeta-num">Entrada 01</p>
+            <h3>Diseñar el estanque</h3>
+            <p>Profundidades, zonas de plantas y cómo calcular cuántos litros tienes.</p>
+            <p class="lectura" data-de="diseno"></p>
+          </div>
+        </article>
+        <article class="tarjeta" data-ir="especies" tabindex="0">
+          <img src="img/peces.svg" alt="" loading="lazy">
+          <div>
+            <p class="tarjeta-num">Entrada 02</p>
+            <h3>Qué peces elegir</h3>
+            <p>Carpines, tencas y koi: qué necesita cada uno y cuántos caben.</p>
+            <p class="lectura" data-de="especies"></p>
+          </div>
+        </article>
+        <article class="tarjeta" data-ir="agua" tabindex="0">
+          <img src="img/ciclo-nitrogeno.svg" alt="" loading="lazy">
+          <div>
+            <p class="tarjeta-num">Entrada 03</p>
+            <h3>Agua y estaciones</h3>
+            <p>El ciclo del nitrógeno y cuánto dar de comer según la temperatura.</p>
+            <p class="lectura" data-de="agua"></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== ENTRADA 1 ===================== -->
+    <section id="diseno" class="entrada" role="tabpanel" hidden>
+      <article>
+        <header class="entrada-cabecera">
+          <p class="entrada-num">Entrada 01 · Primavera</p>
+          <h2>Diseñar el estanque: la forma importa más que el tamaño</h2>
+          <p class="lectura" data-de="diseno"></p>
+        </header>
+
+        <p>El error más común al construir un estanque es hacerlo como una piscina: paredes rectas y la misma profundidad en todas partes. Un estanque natural necesita <strong>escalones</strong>, porque cada profundidad alberga plantas distintas y cada planta cumple una función.</p>
+
+        <figure class="figura">
+          <img src="img/perfil-estanque.svg" alt="Corte transversal de un estanque con tres zonas: palustre en la orilla, aguas someras y zona profunda en el centro" class="ampliable">
+          <figcaption>Corte del estanque. Pulsa la imagen para ampliarla.</figcaption>
+        </figure>
+
+        <h3>Las tres zonas</h3>
+        <ul class="lista-zonas">
+          <li><span class="etiqueta e1">0–20 cm</span> <strong>Zona palustre.</strong> Lirios, juncos y menta de agua. Son la depuradora: sus raíces absorben los nutrientes que, si no, alimentarían a las algas.</li>
+          <li><span class="etiqueta e2">20–60 cm</span> <strong>Aguas someras.</strong> Plantas oxigenadoras sumergidas (como el milhojas acuático) y el refugio de los alevines.</li>
+          <li><span class="etiqueta e3">&gt; 80 cm</span> <strong>Zona profunda.</strong> Donde los peces pasan el verano (agua más fresca) y el invierno (no se congela hasta el fondo). Nenúfares para dar sombra.</li>
+        </ul>
+
+        <aside class="nota">
+          <strong>Regla que me habría ahorrado un verano de agua verde:</strong> las plantas deberían cubrir entre un tercio y la mitad de la superficie. Con menos, las algas ganan la carrera por los nutrientes.
+        </aside>
+
+        <h3>¿Cuántos litros tiene mi estanque?</h3>
+        <p>Antes de comprar un solo pez hay que conocer el volumen. Una aproximación sencilla es multiplicar el largo por el ancho y por la <em>profundidad media</em> (no la máxima). Como un estanque natural no es una caja, aplico un factor de corrección de 0,7 para compensar los taludes.</p>
+
+        <!-- Herramienta interactiva 1: la lógica está en calcularEstanque() en js/script.js -->
+        <form id="calculadora" class="herramienta" novalidate>
+          <h4>Calculadora de volumen y capacidad</h4>
+          <div class="campos">
+            <label>Largo (m)<input type="number" id="largo" min="0.5" max="50" step="0.1" value="4"></label>
+            <label>Ancho (m)<input type="number" id="ancho" min="0.5" max="50" step="0.1" value="3"></label>
+            <label>Profundidad media (m)<input type="number" id="profundidad" min="0.2" max="3" step="0.05" value="0.6"></label>
+          </div>
+          <output id="resultado-calculadora" class="resultado" aria-live="polite"></output>
+          <p class="aviso-pequeno">Cálculo orientativo y prudente para un estanque sin filtración mecánica.</p>
+        </form>
+
+        <h3>Lo que haría distinto</h3>
+        <p>Usé lámina de EPDM, que aguanta bien el sol, pero no puse geotextil debajo y una raíz la perforó al segundo año. Pon siempre una capa protectora (o una alfombra vieja) entre la tierra y la lámina.</p>
+      </article>
+      <nav class="siguiente"><button data-ir="especies">Siguiente: qué peces elegir →</button></nav>
+    </section>
+
+    <!-- ===================== ENTRADA 2 ===================== -->
+    <section id="especies" class="entrada" role="tabpanel" hidden>
+      <article>
+        <header class="entrada-cabecera">
+          <p class="entrada-num">Entrada 02 · Verano</p>
+          <h2>Qué peces elegir (y por qué menos es más)</h2>
+          <p class="lectura" data-de="especies"></p>
+        </header>
+
+        <p>La tentación es llenar el estanque de colores. Pero cada pez produce desechos, y en un estanque sin filtro son las plantas y las bacterias las que tienen que procesarlos. Mi consejo: <strong>empieza con pocos peces y espera un año</strong>. Se reproducirán solos.</p>
+
+        <figure class="figura">
+          <img src="img/peces.svg" alt="Ilustración comparando el tamaño adulto de un carpín dorado, una tenca y una carpa koi" class="ampliable">
+          <figcaption>Tamaños adultos aproximados. Pulsa la imagen para ampliarla.</figcaption>
+        </figure>
+
+        <!-- Fichas: se despliegan con <details>, sin JavaScript -->
+        <div class="fichas">
+          <details class="ficha" open>
+            <summary><span class="punto naranja"></span><span>Carpín dorado (<em>Carassius auratus</em>)</span></summary>
+            <p>El más agradecido. Resiste el frío, tolera agua poco perfecta y crece hasta unos 20–25 cm. Ideal para estanques pequeños y para empezar.</p>
+            <dl><dt>Profundidad mínima</dt><dd>60 cm</dd><dt>Dificultad</dt><dd>Baja</dd></dl>
+          </details>
+          <details class="ficha">
+            <summary><span class="punto verde"></span><span>Tenca (<em>Tinca tinca</em>)</span></summary>
+            <p>Pez autóctono, discreto y de fondo. Remueve el lodo buscando larvas y apenas se ve, pero ayuda a mantener el equilibrio. Convive bien con los carpines.</p>
+            <dl><dt>Profundidad mínima</dt><dd>80 cm</dd><dt>Dificultad</dt><dd>Baja</dd></dl>
+          </details>
+          <details class="ficha">
+            <summary><span class="punto rojo"></span><span>Carpa koi (<em>Cyprinus rubrofuscus</em>)</span></summary>
+            <p>Preciosa, pero exigente: supera fácilmente los 60 cm y arranca las plantas. Sinceramente, no la recomiendo para un estanque natural salvo que tenga varios miles de litros.</p>
+            <dl><dt>Profundidad mínima</dt><dd>120 cm</dd><dt>Dificultad</dt><dd>Alta</dd></dl>
+          </details>
+        </div>
+
+        <aside class="nota">
+          <strong>Nunca sueltes estos peces en ríos ni lagunas.</strong> Los carpines y las koi son especies exóticas y pueden desplazar a la fauna local. Si te sobran, regálalos a otro aficionado.
+        </aside>
+
+        <h3>Aclimatarlos sin estrés</h3>
+        <ol>
+          <li>Deja flotar la bolsa cerrada en el estanque unos 20 minutos para igualar la temperatura.</li>
+          <li>Abre la bolsa y añade un vaso de agua del estanque cada cinco minutos, tres o cuatro veces.</li>
+          <li>Saca los peces con una red; no vacíes el agua de la tienda en tu estanque.</li>
+          <li>No les des de comer hasta el día siguiente.</li>
+        </ol>
+      </article>
+      <nav class="siguiente"><button data-ir="agua">Siguiente: agua y estaciones →</button></nav>
+    </section>
+
+    <!-- ===================== ENTRADA 3 ===================== -->
+    <section id="agua" class="entrada" role="tabpanel" hidden>
+      <article>
+        <header class="entrada-cabecera">
+          <p class="entrada-num">Entrada 03 · Otoño e invierno</p>
+          <h2>Agua y estaciones: el estanque como un ser vivo</h2>
+          <p class="lectura" data-de="agua"></p>
+        </header>
+
+        <p>El agua "limpia" no es la que se ve transparente, sino la que tiene poco amoniaco. Los peces lo excretan continuamente y es tóxico incluso en pequeñas cantidades. Lo que lo elimina es un proceso invisible: el <strong>ciclo del nitrógeno</strong>.</p>
+
+        <figure class="figura">
+          <img src="img/ciclo-nitrogeno.svg" alt="Diagrama del ciclo del nitrógeno: los peces producen amoniaco, las bacterias lo transforman en nitrito y luego en nitrato, y las plantas absorben el nitrato" class="ampliable">
+          <figcaption>El ciclo del nitrógeno en el estanque. Pulsa la imagen para ampliarla.</figcaption>
+        </figure>
+
+        <p>Unas bacterias convierten el amoniaco en nitrito (también tóxico) y otras convierten el nitrito en nitrato, que es mucho menos dañino y sirve de abono a las plantas. Por eso un estanque recién llenado necesita varias semanas antes de recibir peces: las bacterias tienen que colonizarlo primero.</p>
+
+        <h3>Cuánto darles de comer según la temperatura</h3>
+        <p>Los peces son de sangre fría: su metabolismo depende del agua. Con frío digieren muy despacio y la comida sin digerir se pudre en su intestino y en el fondo. Tengo un termómetro flotante y esta tabla pegada en la caseta:</p>
+
+        <!-- Herramienta interactiva 2: la lógica está en actualizarAlimentacion() en js/script.js -->
+        <div id="guia-alimentacion" class="herramienta">
+          <h4>Guía de alimentación</h4>
+          <label for="temperatura" class="etiqueta-rango">Temperatura del agua: <strong><span id="valor-temperatura">16</span> °C</strong></label>
+          <input type="range" id="temperatura" min="0" max="32" step="1" value="16">
+          <div class="escala" aria-hidden="true"><span>0 °C</span><span>16 °C</span><span>32 °C</span></div>
+          <div id="consejo-alimentacion" class="resultado" aria-live="polite"></div>
+        </div>
+
+        <h3>El invierno</h3>
+        <p>No rompas el hielo a golpes: las ondas de choque estresan a los peces. Si el estanque se congela, apoya un cazo de agua caliente para abrir un agujero y que salgan los gases. Con más de 80 cm de profundidad, el fondo se mantiene alrededor de 4 °C y los peces pasan el invierno quietos allí.</p>
+
+        <aside class="nota">
+          <strong>Señal de alarma en verano:</strong> si ves a los peces boqueando en la superficie al amanecer, falta oxígeno. El agua caliente disuelve menos oxígeno; deja de alimentarlos un par de días y añade agua fresca o una cascada.
+        </aside>
+      </article>
+      <nav class="siguiente"><button data-ir="inicio">← Volver al inicio</button></nav>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>Agua Quieta es un proyecto académico para la asignatura Desarrollo de Aplicaciones en Red (UNIR). Ilustraciones propias en SVG.</p>
+  </footer>
+
+  <!-- Visor de imágenes: elemento <dialog> nativo de HTML5 -->
+  <dialog id="visor" aria-label="Imagen ampliada">
+    <button class="cerrar-visor" type="button" aria-label="Cerrar">×</button>
+    <img id="visor-imagen" src="" alt="">
+    <p id="visor-texto"></p>
+  </dialog>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

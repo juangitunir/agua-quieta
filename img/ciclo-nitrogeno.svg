@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="Georgia, serif">
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10z" fill="#5f5b50"/>
+    </marker>
+  </defs>
+  <rect width="800" height="420" fill="#fffaf0"/>
+  <text x="40" y="45" font-size="20" fill="#2b2a26">El ciclo del nitrógeno</text>
+
+  <!-- nodos -->
+  <g font-size="16" text-anchor="middle">
+    <rect x="60" y="110" width="190" height="80" rx="12" fill="#f6dcc2" stroke="#c8742d" stroke-width="2"/>
+    <text x="155" y="145" fill="#2b2a26">Peces y restos</text>
+    <text x="155" y="168" font-size="13" fill="#5f5b50">excrementos, comida</text>
+
+    <rect x="550" y="110" width="190" height="80" rx="12" fill="#f3cfc7" stroke="#c4502f" stroke-width="2"/>
+    <text x="645" y="145" fill="#2b2a26">Amoniaco (NH₃)</text>
+    <text x="645" y="168" font-size="13" fill="#9b3a22">muy tóxico</text>
+
+    <rect x="550" y="290" width="190" height="80" rx="12" fill="#f6e3bf" stroke="#d1a13c" stroke-width="2"/>
+    <text x="645" y="325" fill="#2b2a26">Nitrito (NO₂⁻)</text>
+    <text x="645" y="348" font-size="13" fill="#8a6514">tóxico</text>
+
+    <rect x="60" y="290" width="190" height="80" rx="12" fill="#dcebd0" stroke="#6f8a3c" stroke-width="2"/>
+    <text x="155" y="325" fill="#2b2a26">Nitrato (NO₃⁻)</text>
+    <text x="155" y="348" font-size="13" fill="#4c6b3c">abono para plantas</text>
+  </g>
+
+  <!-- flechas -->
+  <g stroke="#5f5b50" stroke-width="2.5" fill="none" marker-end="url(#flecha)">
+    <path d="M255 150 H540"/>
+    <path d="M645 195 V280"/>
+    <path d="M545 330 H260"/>
+    <path d="M155 285 V200"/>
+  </g>
+  <g font-size="13" fill="#5f5b50" text-anchor="middle">
+    <text x="400" y="140">descomposición</text>
+    <text x="700" y="232" text-anchor="start">bacterias</text>
+    <text x="700" y="250" text-anchor="start">(1ª etapa)</text>
+    <text x="400" y="320">bacterias (2ª etapa)</text>
+    <text x="100" y="242" text-anchor="end">las plantas</text>
+    <text x="100" y="260" text-anchor="end">lo absorben</text>
+  </g>
+
+  <!-- plantas en el centro -->
+  <g transform="translate(400 225)">
+    <path d="M0 40 C -5 10 5 -10 0 -30" stroke="#5f8a45" stroke-width="3" fill="none"/>
+    <path d="M0 0 q -25 -10 -30 -30 q 25 5 30 30z M0 -10 q 25 -10 30 -30 q -25 5 -30 30z" fill="#6b9a4f"/>
+    <ellipse cx="0" cy="42" rx="40" ry="6" fill="#7fb3b2"/>
+  </g>
+</svg>
